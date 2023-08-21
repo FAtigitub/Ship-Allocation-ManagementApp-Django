@@ -1,0 +1,130 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+    /* Your existing styles here */
+    .alert {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .alert-error {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+    }
+
+    /* Additional style for positioning the form at the bottom */
+    .bottom-form-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Additional style for button hover effect */
+    .btn-primary {
+        background-color: #c38d37;
+        border-color: #c38d37;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #b3792f;
+        border-color: #b3792f;
+        transform: translateY(-2px);
+    }
+
+    /* Separate icon and label */
+    .input-group-prepend {
+        margin-right: 10px;
+    }
+
+    /* Add space between inputs */
+    .form-group:not(:last-child) {
+        margin-bottom: 20px;
+    }
+</style>
+
+{% block content %}
+<div class="container mt-3 mb-5">
+    <div class="row mt-5 mb-5 justify-content-center">
+        <div class="col-lg-6 shadow p-4">
+            <h3 style="font-size: 24px; font-weight: bold; color: #b3792f;">Create an Account</h3>
+            <div class="form-background">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                <div class="bottom-form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                
+                                
+                                <input type="text" class="form-control" id="firstNameInput" name="username"
+                                    aria-describedby="textHelp" placeholder="Username" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                
+                                <input type="email" class="form-control" id="emailInput" name="email"
+                                    aria-describedby="emailHelp" placeholder="Email address" required>
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    
+                                </div>
+                                <input type="password" class="form-control" id="passwordInput" name="password1"
+                                    placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                  
+                                </div>
+                                <input type="password" class="form-control" id="confirmPasswordInput" name="password2"
+                                    placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #64af53">Create an Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

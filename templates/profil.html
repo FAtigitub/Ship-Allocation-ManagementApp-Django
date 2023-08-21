@@ -1,0 +1,8 @@
+
+{% block content %}
+  <h2>Votre Profil</h2>
+  <p>Nom d'utilisateur : {{ user_profile.user.username }}</p>
+  <p>Prénom : {{ user_profile.user.first_name }}</p>
+  <p>Nom de famille : {{ user_profile.user.last_name }}</p>
+  <!-- Affichez d'autres champs de profil ici -->
+{% endblock %}
